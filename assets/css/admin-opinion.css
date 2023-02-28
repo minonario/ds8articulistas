@@ -1,0 +1,13 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Jan 29, 2023, 9:27:47 PM
+    Author     : josemorales
+*/
+
+#sab-current-image img {
+  max-width: 130px;
+  height: auto;
+}
