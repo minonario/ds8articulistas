@@ -13,7 +13,14 @@ get_header(); ?>
 <div class="si-container">
 	<div id="primary" class="content-area">
 		<main id="content" class="site-content">
+                  
 			<?php
+                        if ( sinatra_option( 'blog_horizontal_post_categories' ) ) {
+					get_template_part( 'template-parts/entry/entry-category' );
+				}
+                        get_template_part( 'template-parts/entry/entry-header' );
+                        
+                        
 			/**
 			 * generate_before_main_content hook.
 			 *

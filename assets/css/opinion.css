@@ -109,6 +109,7 @@ img.sab-custom-avatar {
     line-height: 21px;
     display: block;
     margin: 0px 10px;
+    padding-bottom: 10px;
     box-sizing: inherit;
     word-wrap: break-word;
     font-weight: 400;
@@ -142,10 +143,10 @@ img.sab-custom-avatar {
     margin-right: 0px !important;
     line-height: 1.42857143 !important;
     border: 1px solid #d5d5d5 !important;
-    border-radius: 0px 0px 0 0 !important;
+    border-radius: 0 0 0 0 !important;
     background-color: #e8e8e8 !important;
     color: #353664 !important;
-    padding: 15px 18px 15px 18px !important;
+    padding: 15px 18px 15px 18px;
     text-decoration: none !important;
     font-size: 14px;
     text-align: center !important;
@@ -262,7 +263,7 @@ img.sab-custom-avatar {
 /** socials **/
 .ds8boxplugin-wrap .ds8boxplugin-socials {
     position: relative;
-    display: block;
+    display: flex;
     background: #fcfcfc;
     padding: 5px;
     border-top: 1px solid #eee;
@@ -273,10 +274,20 @@ img.sab-custom-avatar {
 .ds8boxplugin-socials {
     line-height: 1!important;
 }
+#colophon h4.widget-title {
+    font-size: .9375rem !important;
+}
 .boton-suscribir {
     padding: 10px 20px;
     display: inline-block;
     color: #FFFFFF!important;
     background-color: #353664;
     border-radius: 5px;
+}
+.boletin {
+  display: inline-flex;
+}
+.boletin img {
+  width: 30px;
+  margin-right: 5px;
 }
