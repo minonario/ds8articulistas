@@ -40,6 +40,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     margin-bottom: 0px;
     padding: 0px 0px;
 }
+.single .ds8boxplugin-wrap {
+    margin-bottom: 40px;
+}
 .ds8boxplugin-wrap {
     border-width: 3px;
 }
@@ -133,11 +136,12 @@ img.sab-custom-avatar {
     display: grid;
     grid-template-columns: 1fr 3fr;
     column-gap: 5px;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
 }
 .columnist.nav-tabs {
     border-bottom: 2px solid #353664;
     padding-bottom: 1px;
+    margin: 0
 }
 #tab_container_ds8 .columnist.nav-tabs > li > a {
     margin-right: 0px !important;
@@ -175,19 +179,19 @@ img.sab-custom-avatar {
 }
 .fd-articulista-nombre {
     color: rgb(53, 54, 100) !important;
-    font-size: 17px !important;
-    font-weight: 700 !important;
+    font-size: 1rem;
+    font-weight: 700 !important
 }
 .fd-lista-colaboradores-item a strong {
-    font-size: 16px;
     font-family: 'Roboto', sans-serif;
     font-weight: bolder;
 }
 .fd-lista-colaboradores-item .fd-lista-opinion-article {
-    font-size: 14px;
+    font-size: 0.9rem;
     color: #313131;
     font-family: 'Roboto', sans-serif;
-    line-height: 1.5;
+    line-height: 1.2;
+    padding: 0 0 4px 0
 }
 .fd-lista-prensa-item {
     padding: 2px;
@@ -195,7 +199,8 @@ img.sab-custom-avatar {
 }
 .ds8-ver-todos-opinion a {
     text-decoration: none;
-    margin-top: 10px;
+    /*margin-top: 10px;*/
+    margin-top: 0;
     display: block;
     font-size: 14px;
     font-weight: 600;
@@ -283,6 +288,7 @@ img.sab-custom-avatar {
     color: #FFFFFF!important;
     background-color: #353664;
     border-radius: 5px;
+    font-size: 1rem
 }
 .boletin {
   display: inline-flex;
@@ -290,4 +296,36 @@ img.sab-custom-avatar {
 .boletin img {
   width: 30px;
   margin-right: 5px;
+}
+.ctavatar {
+  display: grid;
+  align-self: flex-start;
+}
+
+/***** MOBILE *****/
+
+.fd-lista-opinion-container {
+    padding-top: 5px
+}
+
+@media screen and (max-width: 767px) {
+  .fd-lista-opinion-container {
+      padding-top: 10px
+  }
+  .fd-lista-colaboradores-item {
+      column-gap: 0;
+      padding: 0 4px;
+      margin-bottom: 0
+  }
+  .fd-articulista-nombre {
+      font-size: .9rem;
+      padding: 0 0 8px 8px
+  }
+  .fd-lista-colaboradores-item .fd-lista-opinion-article {
+      font-size: .9rem;
+      line-height: 1.2;
+      padding: 0 0 8px 8px;
+      min-height: 48px
+  }
+
 }

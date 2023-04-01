@@ -143,7 +143,9 @@ class DS8_Columnist_Widget extends WP_Widget {
                                         if ( count($posts) > 0 ) :
                                 ?>
                                     <div class="fd-lista-colaboradores-item">
-                                            <?php echo get_avatar($ID, '65', 'mystery', '', array('fd-lista-opinion-picture'));  ?>
+                                            <div class="ctavatar">
+                                            <?php echo get_avatar($ID, '65', 'mystery', 'Artículista: '.$user->data->display_name, array('fd-lista-opinion-picture'));  ?>
+                                            </div>
                                             <div class="fd-lista-name-and-article">
                                               <a href="<?php echo get_author_posts_url($ID); ?>" class="fd-articulista-nombre"><strong><?php echo $user->data->display_name; ?></strong></a>
                                                       <?php foreach($posts as $post): ?>

@@ -19,7 +19,9 @@ get_header(); ?>
 					get_template_part( 'template-parts/entry/entry-category' );
 				}
                         get_template_part( 'template-parts/entry/entry-header' );
-                        
+                        echo '<div class="entry-meta"><div class="entry-meta-elements">';
+                        echo sinatra_entry_meta_date();
+                        echo '</div></div>';
                         
 			/**
 			 * generate_before_main_content hook.
@@ -51,7 +53,7 @@ get_header(); ?>
                         <!-- wp:columns -->
                         <div class="wp-block-columns"><!-- wp:column {"width":"150px"} -->
                         <div class="wp-block-column" style="flex-basis:150px"><!-- wp:html -->
-                        <a title="Ver articulistas" class="boton-suscribir" href="https://test.finanzasdigital.com/opinion/" aria-label="Ver articulistas">Ver articulistas</a>
+                        <a title="Ver articulistas" class="boton-suscribir" href="https://finanzasdigital.com/opinion/" aria-label="Ver articulistas">Ver articulistas</a>
                         <!-- /wp:html --></div>
                         <!-- /wp:column -->
 
@@ -73,6 +75,10 @@ get_header(); ?>
                         <!-- /wp:columns -->
                   
                         <?php echo do_shortcode('[simple-author-box-ds8]')?>
+                        
+                        <?php echo do_shortcode( '[ds8relatedposts]' ); ?>
+                        
+                        <?php do_action( 'sinatra_after_singular' ); ?>
 		</main>
 	</div>
   <?php 
