@@ -305,7 +305,8 @@ img.sab-custom-avatar {
 /***** MOBILE *****/
 
 .fd-lista-opinion-container {
-    padding-top: 5px
+    padding-top: 5px;
+    margin-bottom: 20px
 }
 
 @media screen and (max-width: 767px) {
