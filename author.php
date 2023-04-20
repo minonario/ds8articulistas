@@ -6,9 +6,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header(); ?>
+<?php
+if (is_author()):
+  $post_id = get_the_ID();
+  $hero = get_field('superior', $post_id);
+  if( $hero ): 
+    if ( $hero['banner_superior']):
+      $class = ' banner-active';
+    endif;
+  endif; 
+endif;?>
 
-<div class="si-container" id="nuevo">
+<div class="si-container<?php echo (isset($class) ? $class : '') ?>" id="nuevo">
   <div id="primary" class="content-area">
+      <?php
+      if (is_author()):
+        if( $hero ): 
+          if ( $hero['banner_superior']): ?>
+          <div class="ad-banners center">
+            <?php echo do_shortcode($hero['shortcode_banner']); ?>
+          </div>
+          <?php endif;
+        endif; 
+      endif;?>
       <main id="content" class="site-content">
           <?php
           /**
@@ -121,6 +141,18 @@ the_posts_pagination();?>
 	
 	
 	</main>
+    <?php
+    if (is_author()):
+      $hero = get_field('inferior', $post_id);
+      if( $hero ): 
+        if ( $hero['banner_inferior']): ?>
+        <div class="ad-banners center">
+          <?php echo do_shortcode($hero['shortcode_banner']); ?>
+        </div>
+        <?php endif;
+      endif; 
+    endif;
+    ?>
   </div>
 <?php get_sidebar(); ?>
 </div>

@@ -10,8 +10,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 get_header(); ?>
-<div class="si-container">
+
+<?php
+if (is_single()):
+  $post_id = get_the_ID();
+  $hero = get_field('superior', $post_id);
+  if( $hero ): 
+    if ( $hero['banner_superior']):
+      $class = ' banner-active';
+    endif;
+  endif; 
+endif;?>
+<div class="si-container<?php echo (isset($class) ? $class : '') ?>">
 	<div id="primary" class="content-area">
+          <?php
+          if (is_single()):
+            if( $hero ): 
+              if ( $hero['banner_superior']): ?>
+              <div class="ad-banners center">
+                <?php echo do_shortcode($hero['shortcode_banner']); ?>
+              </div>
+              <?php endif;
+            endif; 
+          endif;?>
 		<main id="content" class="site-content">
                   
 			<?php
@@ -75,6 +96,20 @@ get_header(); ?>
                         <!-- /wp:columns -->
                   
                         <?php echo do_shortcode('[simple-author-box-ds8]')?>
+                        
+                        <?php
+                        if (is_single()):
+                          $post_id = get_the_ID();
+                          $hero = get_field('inferior', $post_id);
+                          if( $hero ): 
+                            if ( $hero['banner_inferior']): ?>
+                            <div class="ad-banners center">
+                              <?php echo do_shortcode($hero['shortcode_banner']); ?>
+                            </div>
+                            <?php endif;
+                          endif; 
+                        endif;
+                        ?>
                         
                         <?php echo do_shortcode( '[ds8relatedposts]' ); ?>
                         
