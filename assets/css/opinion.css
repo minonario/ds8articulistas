@@ -104,8 +104,8 @@ img.sab-custom-avatar {
 .posts-opinion-card-titulo {
   font-size: 30px;
   padding: 10px 10px 0px 10px;
-  margin-bottom:0px;
-  margin-top: 0;
+  margin-bottom:10px;
+  margin-top: 0
 }
 .posts-opinion-card-descricion {
     font-size: 14px;
