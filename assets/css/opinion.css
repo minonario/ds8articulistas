@@ -8,12 +8,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
 */
 
 .fd-lista-articulista {
-    padding-top: 20px !important;
-    padding-bottom: 20px !important;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
     border-bottom: 1px solid rgb(204, 204, 204) !important;
     display: grid !important;
     grid-template-columns: 1fr 8fr !important;
     grid-template-rows: auto auto !important;
+    background-color: #f1f1f1
 }
 .fd-lista-opinion-container p {
     margin-top: 0 !important;
@@ -152,7 +153,7 @@ img.sab-custom-avatar {
     color: #353664 !important;
     padding: 15px 18px 15px 18px;
     text-decoration: none !important;
-    font-size: 14px;
+    font-size: 1rem;
     text-align: center !important;
     font-weight: bold;
 }
@@ -179,19 +180,21 @@ img.sab-custom-avatar {
 }
 .fd-articulista-nombre {
     color: rgb(53, 54, 100) !important;
-    font-size: 1rem;
-    font-weight: 700 !important
+    font-size: 1.04rem;
+    font-weight: 700 !important;
+    line-height: 1;
+    margin-bottom: 4px;
 }
 .fd-lista-colaboradores-item a strong {
     font-family: 'Roboto', sans-serif;
     font-weight: bolder;
 }
 .fd-lista-colaboradores-item .fd-lista-opinion-article {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: #313131;
     font-family: 'Roboto', sans-serif;
     line-height: 1.2;
-    padding: 0 0 4px 0
+    padding: 4px 0 4px 0
 }
 .fd-lista-prensa-item {
     padding: 2px;
@@ -202,7 +205,7 @@ img.sab-custom-avatar {
     /*margin-top: 10px;*/
     margin-top: 0;
     display: block;
-    font-size: 14px;
+    font-size: 1rem;;
     font-weight: 600;
     text-align: center;
     box-sizing: border-box;
@@ -315,18 +318,56 @@ img.sab-custom-avatar {
   }
   .fd-lista-colaboradores-item {
       column-gap: 0;
-      padding: 0 4px;
+      padding: 8px 4px;
       margin-bottom: 0
   }
   .fd-articulista-nombre {
-      font-size: .9rem;
-      padding: 0 0 8px 8px
+      font-size: 1rem;
+      padding: 0px 15px 5px 8px;
+      line-height: 1;
   }
   .fd-lista-colaboradores-item .fd-lista-opinion-article {
-      font-size: .9rem;
-      line-height: 1.2;
-      padding: 0 0 8px 8px;
-      min-height: 48px
+      font-size: 1rem;
+      line-height: 1;
+      padding: 0px 0 14px 8px
   }
 
+}
+
+@media only screen and (max-width: 960px) {
+    .fd-lista-colaboradores-item .fd-lista-opinion-article {
+      font-size: 1rem !important;
+  	}
+    .fd-articulista-nombre {
+      font-size: 1.1rem !important;
+    }
+  }
+  
+.fd-lista-colaboradores-item:nth-of-type(odd) { background-color: #F1F1F1 }
+.fd-lista-colaboradores-item:nth-of-type(even) { background-color: #E0E0E0 }
+
+.fd-lista-colaboradores-item {
+  padding: 6px 0;
+  margin-bottom: 0
+}
+
+.fd-lista-opinion-container {
+    padding-top: 0;
+    margin-bottom: 0px;
+}
+.page #primary .entry-content .fd-lista-articulista p {
+  font-size: 1.1rem;
+  line-height: 22px;
+}
+
+
+.fd-lista-articulista {
+  padding: 10px 0;
+}
+.rowcd {
+  display: inline-grid
+}
+.rowcd a{
+  font-size: 1.1rem;
+  padding-bottom: 10px;
 }

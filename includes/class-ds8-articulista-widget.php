@@ -150,7 +150,7 @@ class DS8_Columnist_Widget extends WP_Widget {
                                               <a href="<?php echo get_author_posts_url($ID); ?>" class="fd-articulista-nombre"><strong><?php echo $user->data->display_name; ?></strong></a>
                                                       <?php foreach($posts as $post): ?>
                                               <a class="fd-lista-opinion-article" href="<?php the_permalink($post->ID); ?>" title="<?php echo $post->post_title; ?>"><?php //echo wp_trim_words($post->post_title, 7, '...');
-                                                    echo mb_strimwidth($post->post_title, 0, 45, "...");?></a>
+                                                    echo mb_strimwidth($post->post_title, 0, 55, "...");?></a>
                                                     <?php endforeach; ?>
                                             </div>
 

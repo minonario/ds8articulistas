@@ -46,7 +46,7 @@ $curauth = (isset($_GET['author_name'])) ? get_user_by('slug', $author_name) : g
 	<div class="post-opinion-card">
 		<div>
 			<div class="posts-opinion-card-gravatar">
-				<?php echo get_avatar( $curauth->user_email , '250 ', '', $curauth->data->display_name); ?>
+				<?php echo get_avatar( $curauth->user_email , '145 ', '', $curauth->data->display_name); ?>
 			</div>
 			<div>
 				<h2 class="posts-opinion-card-titulo"><?php echo $curauth->first_name;?>&nbsp;<?php echo $curauth->last_name;?></h2>
