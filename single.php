@@ -72,7 +72,7 @@ endif;?>
 			?>
                   
                         <!-- wp:columns -->
-                        <div class="wp-block-columns"><!-- wp:column {"width":"150px"} -->
+                        <div class="wp-block-columns bloque-articulistas"><!-- wp:column {"width":"150px"} -->
                         <div class="wp-block-column" style="flex-basis:150px"><!-- wp:html -->
                         <a title="Ver articulistas" class="boton-suscribir" href="https://finanzasdigital.com/opinion/" aria-label="Ver articulistas">Ver articulistas</a>
                         <!-- /wp:html --></div>
