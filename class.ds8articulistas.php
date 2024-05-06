@@ -103,6 +103,26 @@ class DS8Articulistas {
             $custom_profile_image = get_user_meta($user->ID, 'ds8box-profile-image', true);
             $class                = array('avatar', 'avatar-' . (int) $args['size'], 'photo');
 
+            // FEATURE 05052024
+            // Get the path to the download directory.
+            //$wp_upload_dir = wp_upload_dir();
+            
+            /*$base = rtrim(ABSPATH, '/');
+            $parsed = parse_url($custom_profile_image);
+            $pathimg = $base.$parsed['path'];
+            if (file_exists($pathimg)){
+                $path_parts = pathinfo($pathimg);
+                $file = $path_parts['filename'].'.'.$path_parts['extension'];
+            }*/
+            
+            /*$image = wp_get_image_editor($base.$parsed['path']);
+            if ( ! is_wp_error( $image ) ) {
+              $image->resize( 65, 65, false );
+              $image->save( $user->ID.'_new_image.jpg' );
+            }*/
+            
+            //wp_generate_attachment_metadata();
+            
             if (!$args['found_avatar'] || $args['force_default']) {
                 $class[] = 'avatar-default';
             }

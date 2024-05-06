@@ -194,7 +194,7 @@ img.sab-custom-avatar {
     color: #313131;
     font-family: 'Roboto', sans-serif;
     line-height: 1.2;
-    padding: 4px 0 4px 0
+    padding: 6px 0 0
 }
 .fd-lista-prensa-item {
     padding: 2px;
@@ -323,15 +323,28 @@ img.sab-custom-avatar {
   }
   .fd-articulista-nombre {
       font-size: 1rem;
-      padding: 0px 15px 5px 8px;
-      line-height: 1;
+      padding: 0px 15px 0px 8px;
+      margin-bottom: 8px;
+      line-height: 1
   }
   .fd-lista-colaboradores-item .fd-lista-opinion-article {
       font-size: 1rem;
       line-height: 1;
-      padding: 0px 0 14px 8px
+      padding: 0px 0 0px 8px;
+      margin: 16px 0 0 0;
   }
 
+}
+
+.fd-lista-articulista {
+  padding: 10px 0;
+}
+.rowcd {
+  display: inline-grid
+}
+.rowcd a{
+  font-size: 1.1rem;
+  padding-bottom: 10px;
 }
 
 @media only screen and (max-width: 960px) {
@@ -341,7 +354,17 @@ img.sab-custom-avatar {
     .fd-articulista-nombre {
       font-size: 1.1rem !important;
     }
-  }
+    .rowcd {
+      padding: 0 10px;
+    }
+    .rowcd .fd-articulista-nombre {
+      font-size: 1rem;
+      padding: 0px 15px 5px 0px;
+    }
+    .fd-lista-articulista {
+        padding: 10px 10px;
+    }
+}
   
 .fd-lista-colaboradores-item:nth-of-type(odd) { background-color: #F1F1F1 }
 .fd-lista-colaboradores-item:nth-of-type(even) { background-color: #E0E0E0 }
@@ -358,16 +381,4 @@ img.sab-custom-avatar {
 .page #primary .entry-content .fd-lista-articulista p {
   font-size: 1rem;
   line-height: 22px;
-}
-
-
-.fd-lista-articulista {
-  padding: 10px 0;
-}
-.rowcd {
-  display: inline-grid
-}
-.rowcd a{
-  font-size: 1.1rem;
-  padding-bottom: 10px;
 }
