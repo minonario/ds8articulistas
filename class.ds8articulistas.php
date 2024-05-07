@@ -101,27 +101,23 @@ class DS8Articulistas {
             }
 
             $custom_profile_image = get_user_meta($user->ID, 'ds8box-profile-image', true);
+            $custom_profile_image_id = get_user_meta($user->ID, 'ds8box-profile-image-id', true);
             $class                = array('avatar', 'avatar-' . (int) $args['size'], 'photo');
 
             // FEATURE 05052024
-            // Get the path to the download directory.
-            //$wp_upload_dir = wp_upload_dir();
+            //$image_ = wp_get_attachment_image_src($custom_profile_image_id, array(65,65));
+            //$ts = wp_calculate_image_sizes(array(65,65), null, null, $custom_profile_image_id);
             
-            /*$base = rtrim(ABSPATH, '/');
-            $parsed = parse_url($custom_profile_image);
-            $pathimg = $base.$parsed['path'];
-            if (file_exists($pathimg)){
-                $path_parts = pathinfo($pathimg);
-                $file = $path_parts['filename'].'.'.$path_parts['extension'];
+            /*if ($custom_profile_image_id != 0){
+              $base = rtrim(ABSPATH, '/');
+              $parsed = parse_url($custom_profile_image);
+              $pathimg = $base.$parsed['path'];
+              $metadata = wp_get_attachment_metadata($custom_profile_image_id);
+              $metadata = wp_generate_attachment_metadata( $custom_profile_image_id, $pathimg );
+              wp_update_attachment_metadata( $custom_profile_image_id, $metadata );
             }*/
             
-            /*$image = wp_get_image_editor($base.$parsed['path']);
-            if ( ! is_wp_error( $image ) ) {
-              $image->resize( 65, 65, false );
-              $image->save( $user->ID.'_new_image.jpg' );
-            }*/
-            
-            //wp_generate_attachment_metadata();
+            $imagen =  !is_author() ? wp_get_attachment_image( $custom_profile_image_id, 'articulista', false ) : null;
             
             if (!$args['found_avatar'] || $args['force_default']) {
                 $class[] = 'avatar-default';
@@ -139,6 +135,7 @@ class DS8Articulistas {
 
             if ('' !== $custom_profile_image && true !== $args['force_default']) {
 
+                if ($imagen == null){
                 $avatar = sprintf(
                     "<img alt='%s' src='%s' srcset='%s' class='%s' height='%d' width='%d' %s/>",
                     esc_attr($args['alt']),
@@ -149,6 +146,9 @@ class DS8Articulistas {
                     (int) $args['width'],
                     $args['extra_attr']
                 );
+                }else{
+                  $avatar = $imagen;
+                }
             }
 
             return $avatar;
@@ -168,7 +168,7 @@ class DS8Articulistas {
              wp_enqueue_script('media-upload');
              wp_enqueue_script('thickbox');
              wp_enqueue_style('thickbox');
-             wp_register_script( 'profile-image', plugin_dir_url( __FILE__ ) .'/assets/js/profile-image.js', array('jquery-core'), false, true );
+             wp_register_script( 'profile-image', plugin_dir_url( __FILE__ ) .'/assets/js/profile-image.js', array('jquery-core'), '1.1', true );
              wp_enqueue_script( 'profile-image' );
              
              wp_enqueue_style('ds8boxplugin-admin-style', plugin_dir_url( __FILE__ ) . '/assets/css/admin-opinion.css');
