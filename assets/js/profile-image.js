@@ -38,11 +38,13 @@
 		select: function() {
 			var context = $( '#ds8box-custom-profile-image' ),
 				input = context.find( '#ds8box-custom-image' ),
+                                input_h = context.find( '#ds8box-custom-image-id' ),
 				image = context.find( 'img' ),
 				attachment = mediaControl.frame().state().get( 'selection' ).first().toJSON();
 
 			image.attr( 'src', attachment.url );
 			input.val( attachment.url );
+                        input_h.val( attachment.id );
 
 		},
 
@@ -56,11 +58,13 @@
 			context.on( 'click', '#ds8box-remove-image', function( e ) {
 				var context = $( '#ds8box-custom-profile-image' ),
 					input = context.find( '#ds8box-custom-image' ),
+                                        input_h = context.find( '#ds8box-custom-image-id' ),
 					image = context.find( 'img' );
 
 				e.preventDefault();
 
 				input.val( '' );
+                                input_h.val( '' );
 				image.attr( 'src', image.data( 'default' ) );
 			} );
 

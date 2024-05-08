@@ -28,6 +28,7 @@ class Ds8_Simple_User_Profile {
 
         $default_url = DS8_AUTHOR_BOX_ASSETS . 'img/default.png';
         $image       = get_user_meta($user->ID, 'ds8box-profile-image', true);
+        $image_id    = get_user_meta($user->ID, 'ds8box-profile-image-id', true);
 
         ?>
 
@@ -43,6 +44,9 @@ class Ds8_Simple_User_Profile {
                                  src="<?php echo '' != $image ? esc_url_raw($image) : esc_url_raw($default_url); ?>"><br>
                             <input type="text" name="ds8box-custom-image" id="ds8box-custom-image" class="regular-text"
                                    value="<?php echo esc_attr($image); ?>">
+                            
+                            <input type="hidden" name="ds8box-custom-image-id" id="ds8box-custom-image-id" class="regular-text"
+                                   value="<?php echo esc_attr($image_id); ?>">
                         </div>
                         <div class="actions">
                             <a href="#" class="button-secondary"
@@ -69,9 +73,36 @@ class Ds8_Simple_User_Profile {
         }
 
         if (isset($_POST['ds8box-custom-image']) && '' != $_POST['ds8box-custom-image']) {
+            // FEATURE 05052024
+            // Get the path to the download directory.
+            $wp_upload_dir = wp_upload_dir();
+            
+            $base = rtrim(ABSPATH, '/');
+            $parsed = parse_url($_POST['ds8box-custom-image']);
+            $pathimg = $base.$parsed['path'];
+            if (file_exists($pathimg)){
+                $path_parts = pathinfo($pathimg);
+                $file = $path_parts['filename'].'.'.$path_parts['extension'];
+            }
+            
+            if ($_POST['ds8box-custom-image-id'] != 0){
+              $attach_id = $_POST['ds8box-custom-image-id'];
+              $metadata = wp_generate_attachment_metadata( $attach_id, $pathimg );
+              wp_update_attachment_metadata( $attach_id, $metadata );
+            }
+            
+            $image = wp_get_image_editor($base.$parsed['path']);
+            if ( ! is_wp_error( $image ) ) {
+              $image->resize( 65, 65, false );
+              $image->save( $path_parts['dirname'].'/'.$path_parts['filename'].'-65x65.'.$path_parts['extension']);
+            }
+          
+          
             update_user_meta($user_id, 'ds8box-profile-image', esc_url_raw($_POST['ds8box-custom-image']));
+            update_user_meta($user_id, 'ds8box-profile-image-id', $_POST['ds8box-custom-image-id']);
         } else {
             delete_user_meta($user_id, 'ds8box-profile-image');
+            delete_user_meta($user_id, 'ds8box-profile-image-id');
         }
 
     }
