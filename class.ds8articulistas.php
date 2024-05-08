@@ -117,7 +117,7 @@ class DS8Articulistas {
               wp_update_attachment_metadata( $custom_profile_image_id, $metadata );
             }*/
             
-            $imagen =  !is_author() ? wp_get_attachment_image( $custom_profile_image_id, 'articulista', false ) : null;
+            $imagen =  !is_author() && !is_admin() ? wp_get_attachment_image( $custom_profile_image_id, 'articulista', false ) : null;
             
             if (!$args['found_avatar'] || $args['force_default']) {
                 $class[] = 'avatar-default';
