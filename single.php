@@ -13,8 +13,7 @@ get_header(); ?>
 
 <?php
 if (is_single()):
-  $post_id = get_the_ID();
-  $hero = get_field('superior', $post_id);
+  $hero = get_field('internas_superior','option');
   if( $hero ): 
     if ( $hero['banner_superior']):
       $class = ' banner-active';
@@ -24,15 +23,23 @@ endif;?>
 <div class="si-container<?php echo (isset($class) ? $class : '') ?>">
 	<div id="primary" class="content-area">
           <?php
-          if (is_single()):
-            if( $hero ): 
-              if ( $hero['banner_superior']): ?>
-              <div class="ad-banners center">
-                <?php echo do_shortcode($hero['shortcode_banner']); ?>
-              </div>
-              <?php endif;
-            endif; 
-          endif;?>
+              if( have_rows('repetidor_superior', 'option') ):
+                while( have_rows('repetidor_superior', 'option') ): the_row();
+                    $hero = get_sub_field('internas_superior','option');
+                    if( $hero ):
+                      if ( !isMobileDevice() ):
+                        if ( $hero['banner_superior']): ?>
+                          <div class="ad-banners center"><?php echo do_shortcode($hero['shortcode_banner']); ?></div>
+                        <?php endif;
+                      else:
+                        if ( $hero['banner_superior']): ?>
+                          <div class="ad-banners center"><?php echo do_shortcode($hero['shortcode_banner_mobile']); ?></div>
+                        <?php endif;
+                      endif;
+                    endif;
+                endwhile;
+              endif;
+          ?>
 		<main id="content" class="site-content">
                   
 			<?php
@@ -98,17 +105,22 @@ endif;?>
                         <?php echo do_shortcode('[simple-author-box-ds8]')?>
                         
                         <?php
-                        if (is_single()):
-                          $post_id = get_the_ID();
-                          $hero = get_field('inferior', $post_id);
-                          if( $hero ): 
-                            if ( $hero['banner_inferior']): ?>
-                            <div class="ad-banners center">
-                              <?php echo do_shortcode($hero['shortcode_banner']); ?>
-                            </div>
-                            <?php endif;
-                          endif; 
-                        endif;
+                            if( have_rows('repetidor_inferior', 'option') ):
+                              while( have_rows('repetidor_inferior', 'option') ): the_row();
+                                  $hero = get_sub_field('internas_inferior','option');
+                                  if( $hero ):
+                                    if ( !isMobileDevice() ):
+                                      if ( $hero['banner_inferior']): ?>
+                                        <div class="ad-banners center"><?php echo do_shortcode($hero['shortcode_banner']); ?></div>
+                                      <?php endif;
+                                    else:
+                                      if ( $hero['banner_inferior']): ?>
+                                        <div class="ad-banners center"><?php echo do_shortcode($hero['shortcode_banner_mobile']); ?></div>
+                                      <?php endif;
+                                    endif;
+                                  endif;
+                              endwhile;
+                            endif;
                         ?>
                         
                         <?php echo do_shortcode( '[ds8relatedposts]' ); ?>
