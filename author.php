@@ -20,15 +20,25 @@ endif;?>
 <div class="si-container<?php echo (isset($class) ? $class : '') ?>" id="nuevo">
   <div id="primary" class="content-area">
       <?php
-      if (is_author()):
-        if( $hero ): 
-          if ( $hero['banner_superior']): ?>
-          <div class="ad-banners center">
-            <?php echo do_shortcode($hero['shortcode_banner']); ?>
-          </div>
-          <?php endif;
-        endif; 
-      endif;?>
+      //if (is_author()):
+        if( have_rows('repetidor_superior', 'option') ):
+          while( have_rows('repetidor_superior', 'option') ): the_row();
+              $hero = get_sub_field('internas_superior','option');
+              if( $hero ):
+                if ( !isMobileDevice() ):
+                  if ( $hero['banner_superior']): ?>
+                    <div class="ad-banners center"><?php echo do_shortcode($hero['shortcode_banner']); ?></div>
+                  <?php endif;
+                else:
+                  if ( $hero['banner_superior']): ?>
+                    <div class="ad-banners center"><?php echo do_shortcode($hero['shortcode_banner_mobile']); ?></div>
+                  <?php endif;
+                endif;
+              endif;
+          endwhile;
+        endif;
+      //endif;
+      ?>
       <main id="content" class="site-content">
           <?php
           /**
@@ -142,16 +152,24 @@ the_posts_pagination();?>
 	
 	</main>
     <?php
-    if (is_author()):
-      $hero = get_field('inferior', $post_id);
-      if( $hero ): 
-        if ( $hero['banner_inferior']): ?>
-        <div class="ad-banners center">
-          <?php echo do_shortcode($hero['shortcode_banner']); ?>
-        </div>
-        <?php endif;
-      endif; 
-    endif;
+    //if (is_author()):
+      if( have_rows('repetidor_inferior', 'option') ):
+        while( have_rows('repetidor_inferior', 'option') ): the_row();
+            $hero = get_sub_field('internas_inferior','option');
+            if( $hero ):
+              if ( !isMobileDevice() ):
+                if ( $hero['banner_inferior']): ?>
+                  <div class="ad-banners center"><?php echo do_shortcode($hero['shortcode_banner']); ?></div>
+                <?php endif;
+              else:
+                if ( $hero['banner_inferior']): ?>
+                  <div class="ad-banners center"><?php echo do_shortcode($hero['shortcode_banner_mobile']); ?></div>
+                <?php endif;
+              endif;
+            endif;
+        endwhile;
+      endif;
+    //endif;
     ?>
   </div>
 <?php get_sidebar(); ?>
