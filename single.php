@@ -104,6 +104,8 @@ endif;?>
                   
                         <?php echo do_shortcode('[simple-author-box-ds8]')?>
                         
+                        <?php echo do_shortcode( '[ds8relatedposts]' ); ?>
+                        
                         <?php
                             if( have_rows('repetidor_inferior', 'option') ):
                               while( have_rows('repetidor_inferior', 'option') ): the_row();
@@ -122,8 +124,6 @@ endif;?>
                               endwhile;
                             endif;
                         ?>
-                        
-                        <?php echo do_shortcode( '[ds8relatedposts]' ); ?>
                         
                         <?php do_action( 'sinatra_after_singular' ); ?>
 		</main>
